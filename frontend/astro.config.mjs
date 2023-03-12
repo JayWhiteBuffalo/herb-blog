@@ -6,8 +6,6 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-  output: 'server',
-  adapter: vercel(),
   integrations: [sanity({
     projectId: 'e0uwxbx9',
     dataset: 'production',
