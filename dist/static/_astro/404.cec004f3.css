@@ -1,0 +1,1 @@
+.navimg-fixed{position:fixed;height:100%;z-index:50}.navimg-float{position:relative;height:100%;z-index:0}.navBar-fixed{position:relative;height:100%;z-index:0;opacity:0%;transform:translate(0)}.navBar-float{position:fixed;height:100%;z-index:50;background-color:green;transform:translate(0)}
