@@ -1,0 +1,14 @@
+---
+import Errguy from "../assets/styles/images/404guy.png"
+import bg from "../assets/styles/images/404bg.jpg"
+import NavBar from "../components/NavBar/NavBar";
+---
+<section class="w-full h-screen">
+    <NavBar client:load/>
+    <div class= " absolute bg-cover w-full h-full bg-[url('https://cdn.discordapp.com/attachments/1060989287564320828/1084357365127725086/2d923559-f7c5-43f0-80a8-51b45e04610b.jpg')]">
+    <img src={bg}/>
+    </div>
+    <div class="z-30 fixed bottom-0">
+    <img class="scale-125" src={Errguy}/>
+    </div>
+</section>

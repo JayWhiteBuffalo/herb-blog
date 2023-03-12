@@ -1,0 +1,43 @@
+---
+import { useSanityClient } from 'astro-sanity';
+import PortableText from '../../components/PortableText.astro';
+
+
+export async function getStaticPaths() {
+  const posts = await useSanityClient().fetch(`*[_type == "post"]`);
+  const categories = await useSanityClient().fetch(`*[_type == "post"]{categories, author,postCategory-> }`);
+  
+
+  return posts.map((post) => {
+    return {
+      params: {
+        slug: post.slug?.current || '',
+      },
+      props: { ...post },
+    };
+  });
+
+
+// const Categories = () => {
+//   return categories.map((post) => {
+//     return {
+//       params: {
+//         slug: post.slug?.current || '',
+//       },
+//       props: { ...post },
+//     };
+//     console.log(post)
+//   });
+// }
+
+
+}
+const { title, body } = Astro.props;
+
+---
+
+<h1>{title}</h1>
+
+<!-- <h2>{categories}</h2> -->
+
+<PortableText portableText={body} />

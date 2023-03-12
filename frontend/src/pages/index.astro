@@ -1,0 +1,67 @@
+---
+import { urlForImage } from "../sanity/urlForImage";
+import { getAllPosts, getAllCategories } from "../sanity/api";
+import PortableText from "../components/PortableText.astro";
+import NavBar from "../components/NavBar/NavBar";
+import Footer from "../components/Footer/index.astro"
+import BlogPosts from "../components/HomePage/BlogPosts.astro";
+import Hero from "../components/Hero/Hero.astro";
+import HeroSection from "../components/Hero/HeroSection.astro";
+import RightSection from "../components/RightSection/index.astro"
+import logo from "../assets/styles/images/Sagelogo2.png"
+import banner from "../assets/styles/images/NameBanner.png"
+// const categories = await getAllCategories();
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>My Blog</title>
+	</head>
+	<body class="">
+		<NavBar client:load/>
+		<main class="pt-8 bg-light">
+			<section class="grid col-start-1 col-end-4 h-full">
+				<div class="w-full">
+				<Hero/>
+				</div>
+				<div class="w-full h-1/2 z-10 mb-10 mt-4">
+
+					<div class="w-full h-full">
+						<!-- <li class="w-44 h-36 absolute top-36 left-3/4 z-0" >
+							<img src={logo}/>
+						  </li>
+					<div class="flex justify-center items-center ml-12">
+					<div class=" flex justify-center items-center top-40 absolute z-10 w-1/2 h-auto drop-shadow-lg shadow-light">
+						<img src={banner}/>
+					</div>
+					</div>
+					<li class="w-44 h-36 absolute top-44 right-3/4 -rotate-90 z-0" >
+						<img src={logo}/>
+					  </li> -->
+					<div class="w-full h-2/3 pt-12 bg-transparent">
+					<HeroSection/>
+					</div>
+					</div>
+				</div>
+				<section>
+					<div class="w-full h-20 bg-light z-40">
+					</div>
+				</section>
+				<div class="grid grid-cols-12">
+				<div class=" z-10 col-start-2 col-end-8
+				 ">
+				<BlogPosts/>
+				</div>
+				<div class="z-10  col-start-9 col-end-12">
+					<RightSection/>
+				</div>
+				</div>
+			</section>
+		</main>
+		<Footer/>
+	</body>
+</html>

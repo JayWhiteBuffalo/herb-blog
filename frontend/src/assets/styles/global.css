@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --primary: #4f5d2f;
+    --secondary:#84a59d;
+    --tertiary: #70566d;
+    --light:#f7ede2;
+    --dark: rbg(7, 16, 19);
+    --error: #ffffd0;
+    --spacing-one: calc(1rem * 0.5);
+    --spacing-two: calc(1rem);
+    --spacing-five: calc(2.5rem);
+  }

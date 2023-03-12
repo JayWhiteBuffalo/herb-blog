@@ -1,0 +1,75 @@
+---
+import { urlForImage } from "../../sanity/urlForImage";
+import { getAllPosts, getAllCategories } from "../../sanity/api";
+import PortableText from "../../components/PortableText.astro";
+const posts =await getAllPosts();
+// const categories = await getAllCategories();
+
+
+// console.log(JSON.stringify(posts[1].categories[0].title))
+let x = [];
+
+// let returnTags = (input, i) => {
+//         if(input[i].categories[0] != null){
+//             console.log(input[i].categories[0].title) 
+//             return `${input[i].categories[0].title}`
+//         }
+// }
+
+// function tags(input){
+//     for (let i = 0; i < posts.length; i++){
+//         returnTags(input, i)
+//         if(returnTags(input, i) !== undefined && returnTags(input,i) !== null){
+//         // return returnTags(input, i)}
+//         console.log("Break")
+    
+        // return input[i].categories[0].title
+
+        // for (let j = 0; j < posts[i].length; j++) {
+        // if (posts[i].categories[j].title != null){
+        // console.log(posts[i].categories[j].title)   
+
+---
+
+<ul class="flex flex-wrap justify-center items-end gap-8 py-8 px-4">
+    {posts.map((post, i) => (
+        <li style={{backgroundImage: `url(./post/${post.mainImage})`}} class="flex flex-col flex-wrap justify-center items-start p-3 gap-4 bg-light border-solid border-2 shadow-lg shadow-primary border-primary w-full opacity-95 hover:opacity-100 hover:brightness-125">
+            <h1 class="text-5xl font-bold leading-10 underline underline-offset-8 text-black">{post.title}</h1>
+            <div>
+                <ul class=" flex gap-4 font-semibold">
+                    <li class="p-2 m-2">
+                        ON : {post._createdAt}
+                    </li>
+                    <li class="p-2">
+                        BY : {post.author}
+                    </li>
+                    <li class="p-2">
+                        IN
+                    </li>
+                    <li class="p-2">
+                        TAGS
+                    </li>
+                </ul>
+            </div>
+            <div class="w-full">
+            <a href={`/post/${post.slug.current} ` } class="w-full">
+            <img src={urlForImage(post.mainImage).url()} class="w-full h-96"/>
+            </a>
+            </div>
+            <div class="w-full h-48 overflow-hidden">
+                <div class="w-full h-3/4 overflow-hidden">
+                <PortableText portableText={(post.body)} />
+                <div class="absolute bottom-10 right-0 w-1/2">
+                <button class="absolute w-full p-2 brightness-75  leading-2 border-primary hover:scale-110 font-semibold ">...Read More</button>
+                </div>  
+                </div>
+                 
+            </div>
+            {x.map((x, i) => (
+                <h1>{x}</h1>
+            ))}
+            <p class="text-3xl font-semibold leading-8 text-white text-center w-1/6 absolute p-8"></p>
+        </li>
+    ))}
+
+</ul>

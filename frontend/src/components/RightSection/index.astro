@@ -1,0 +1,40 @@
+---
+import Categories from "./categories.astro";
+import EmailList from "./EmailList.astro/index.astro"
+import ShopCard from "./shopCard.astro";
+import Bathbomb from "./bathbomb.astro";
+import Jewelry from "./Jewelry.astro";
+import SpiritBath from "./spiritualbath.astro"
+---
+
+<section class="w-full h-fit bg-light p-3 border-4 border-solid border-primary shadow-lg shadow-dark">
+    <div class="w-full h-fit">
+        <ul class=" flex flex-col justify-center items-center gap-y-4 bg-transparent">
+            <li class="w-full h-fit border-solid border-dark border-b-4 p-4 bg-transparent space-y-3">
+                <EmailList/>  
+
+            </li>
+            <li class="w-full h-full border-solid border-dark border-b-4  bg-transparent space-y-3">
+                <a href="#" class=" hover:brightness-110">
+                    <Jewelry/>
+                </a>
+            </li>
+            <li >
+                <Categories/>
+            </li>
+            <li class="w-full h-full border-solid border-dark border-y-2 bg-transparent flex justify-center items-center">
+                <a href="#" class=" hover:brightness-110">
+                <Bathbomb/>
+                </a>
+            </li>
+            <li class="w-full h-64 border-solid border-dark border-b-4 bg-transparent space-y-3">
+                <ShopCard/>
+            </li>
+            <li class="w-full h-64 border-solid border-dark border-b-4  bg-transparent space-y-3">
+                <a href="#" class=" hover:brightness-110">
+                    <SpiritBath/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</section>

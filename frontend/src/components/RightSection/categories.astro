@@ -1,0 +1,49 @@
+---
+import { getAllPosts } from "../../sanity/api";
+
+const post = await getAllPosts()
+let catArr = [];    
+const getCategories = (post) => {
+    for (let i = 0; i < post.length; i++) {
+        const key = post[i];
+        console.log("Post Loop :" + [i])
+        // console.log(key.categories)
+        if(key.categories != null){
+            catArr.push(key.categories[0].title)
+            // console.log(catArr)
+        }
+        
+        // for (let j = 0; j < key.categories[j].length; j++) {
+            // if(key.categories[j] != null){
+            // const value = key.categories[j];
+            // console.log("Category Loop :" + [j])
+        // }}
+    }
+}
+
+
+
+
+    getCategories(post);
+
+    const categoryList = () => {
+        return (  
+            (`
+                ${catArr.map(cat => `${cat}`).join(' -----')}
+            ` )
+            );
+        }
+
+---
+
+<section>
+    <div class="w-full h-fit bg-light">
+        <ul class=" flex flex-col justify-center items-center bg-transparent">
+            <li class="w-full border-solid border-dark border-t-4 p-4 bg-transparent space-y-3">
+                <h1>View Categories</h1>
+            </li>              
+                    <!-- {categoryList} -->
+                {catArr.map(cat => <li class="hover:scale-105 hover:brightness-110 bg-secondary text-center w-full"><a href="#" class="font-semibold leading-loose">{cat}</a></li><br/>)}
+        </ul>
+    </div>   
+</section>
