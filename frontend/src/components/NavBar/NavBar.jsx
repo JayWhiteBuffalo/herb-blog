@@ -55,12 +55,12 @@ const NavBar =()=>{
 						<img src={banner}/>
 					  </div>
   <div class='navbar-fixed w-full px-32 mx-4 grid grid-cols-5 h-fit bg-transparent py-8'>
-    <div class="p-1  grid col-start-3 col-end-6 bg-secondary relative overflow-hidden rounded-lg shadow-sm shadow-dark ">
+    <div class="p-1  grid col-start-3 col-end-6 bg-primary relative overflow-hidden rounded-lg shadow-sm shadow-dark ">
       <div className="flex justify-center items-center w-full">
       <ul class="w-full navbar-nav relative flex flex-row justify-center items-cente px-4 gap-12 list-style-none mr-auto font-bold opacity-100">
 
         <li class="nav-item p-2 hover:text-light2 focus:text-orange-400">
-          <a class="nav-link p-0" href="./"
+          <a class="nav-link p-0" href="/"
           >Home</a>
         </li>
         <li class="nav-item p-2 hover:text-light2 focus:text-orange-400">

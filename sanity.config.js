@@ -1,7 +1,8 @@
 import {defineConfig} from 'sanity'
 import {deskTool} from 'sanity/desk'
 import {visionTool} from '@sanity/vision'
-import {schemaTypes} from './schemas'
+import {schemaTypes} from './studio/schemas'
+
 
 export default defineConfig({
   title: 'Sage Roaming',

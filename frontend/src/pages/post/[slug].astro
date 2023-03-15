@@ -1,12 +1,21 @@
 ---
 import { useSanityClient } from 'astro-sanity';
+import { urlForImage } from "../../sanity/urlForImage";
+import type { HTMLTag } from 'astro/types'
 import PortableText from '../../components/PortableText.astro';
+import NavBar from '../../components/NavBar/NavBar';
+import Footer from "../../components/Footer/index.astro"
+import RightSection from '../../components/RightSection/index.astro'
+import Hero from '../../components/Hero/Hero.astro';
+import HeroSection from '../../components/Hero/HeroSection.astro';
+
+import "../post/slug.css"
 
 
 export async function getStaticPaths() {
   const posts = await useSanityClient().fetch(`*[_type == "post"]`);
   const categories = await useSanityClient().fetch(`*[_type == "post"]{categories, author,postCategory-> }`);
-  
+  const style = await useSanityClient().fetch(`*[_type == "block"]`);
 
   return posts.map((post) => {
     return {
@@ -16,7 +25,19 @@ export async function getStaticPaths() {
       props: { ...post },
     };
   });
+}
 
+export async function getStyle() {
+  const style = await useSanityClient().fetch(`*[_type == "post"]{body} `);
+  return style.map((style) => {
+    console.log(style.body[0].style)
+    return {
+      params: {
+        body: style.body?.current || '',
+      },
+      props: {...style},
+  }});
+}
 
 // const Categories = () => {
 //   return categories.map((post) => {
@@ -31,13 +52,67 @@ export async function getStaticPaths() {
 // }
 
 
-}
-const { title, body } = Astro.props;
+const { title, body, mainImage, style } = Astro.props;
 
+// const x = (body) => {
+//   body.map(body, i => (
+//     console.log("test")
+//   ))
+// }
+let Element = (body[0].style)
+getStyle()
+
+console.log(Astro.props.body[0].style)
+// const getStyles = (tag) => {
+//      for (let i = 0; i < body.length; i++) {
+      
+//       // console.log(i)
+//       // x(body)
+//       const bodyCount = body[i];
+//       // console.log(bodyCount)
+//       if(bodyCount.style === 'normal'){
+//         console.log(bodyCount.style)
+//       } else {
+//         console.log("Tag" + [i] + "::"+ bodyCount.style)
+//       } 
+//      }
+
+
+// console.log(body[17].style)
+
+// let x = () => { body.map(getStyles(body), i => (
+// console.log('Test') 
+// ))}
+// x(body)
+
+
+// console.log(getStyles(body))
 ---
-
-<h1>{title}</h1>
-
-<!-- <h2>{categories}</h2> -->
-
-<PortableText portableText={body} />
+<NavBar client:load/>
+<section class="w-full h-full grid grid-col-12">
+  <div class="w-full h-full grid col-start-2 col-end-9 bg-secondary p-40">
+    <!-- <section class="w-full  h-full">
+      <div class="w-full h-1/2 z-10 mb-10 mt-4">
+        <div class="w-full h-2/3 pt-12 bg-transparent">
+        <HeroSection/>
+        </div>
+      </div>
+      </section>   -->
+    <div>
+      <h1 class="text-7xl mt-8">{title}</h1>
+    </div>
+    <div class="my-12">
+      <img src={urlForImage(mainImage).url()} class="w-full h-96 scale-125"/>
+    </div>
+  <!-- <h2>{categories}</h2> -->
+    <article>
+      <PortableText portableText={body} />
+    </article>
+  </div>
+  <div class="grid col-start 9 col-end-12 p-24 bg-secondary">
+    <div class="mt-24">
+    <RightSection/>
+    </div>
+  </div>
+</section>
+<Footer/>

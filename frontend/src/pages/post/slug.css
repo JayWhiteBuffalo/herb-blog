@@ -1,0 +1,35 @@
+h1{
+    font-size:3em;
+    text-align: center;
+    padding: 4px;
+    margin-bottom: 20px;
+}
+
+h2{
+    font-size:2em;
+}
+
+h3{
+    font-weight: 700;
+}
+
+p{
+    margin: 16px;
+}
+ol{
+    margin: 4px;
+}
+ol li{
+    font-weight:400;
+    padding: 2px;
+    margin: 4px;
+}
+
+ul {
+    margin: 4px;
+}
+ul li{
+    font-weight:600;
+    padding: 2px;
+    margin: 4px;
+}
