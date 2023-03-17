@@ -90,14 +90,7 @@ console.log(Astro.props.body[0].style)
 ---
 <NavBar client:load/>
 <section class="w-full h-full grid grid-col-12">
-  <div class="w-full h-full grid col-start-2 col-end-9 bg-secondary p-40">
-    <!-- <section class="w-full  h-full">
-      <div class="w-full h-1/2 z-10 mb-10 mt-4">
-        <div class="w-full h-2/3 pt-12 bg-transparent">
-        <HeroSection/>
-        </div>
-      </div>
-      </section>   -->
+  <div class="w-full h-full grid col-start-2 col-end-10 bg-secondary p-40">
     <div>
       <h1 class="text-7xl mt-8">{title}</h1>
     </div>
@@ -109,9 +102,11 @@ console.log(Astro.props.body[0].style)
       <PortableText portableText={body} />
     </article>
   </div>
-  <div class="grid col-start 9 col-end-12 p-24 bg-secondary">
-    <div class="mt-24">
+  <div class="grid col-start 9 col-end-12 bg-secondary">
+    <div class="flex flex-col justify-start items-start-">
+    <div class="scale-50">
     <RightSection/>
+    </div>
     </div>
   </div>
 </section>
